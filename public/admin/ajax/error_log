@@ -1,0 +1,2 @@
+[04-Sep-2020 02:54:27 Asia/Dhaka] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/skabustf/Medimate.skoder.tech/ajax/get-user-savings.php on line 9
+[04-Sep-2020 02:54:27 Asia/Dhaka] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/skabustf/Medimate.skoder.tech/ajax/get-user-savings.php on line 17
