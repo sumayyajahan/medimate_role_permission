@@ -11,11 +11,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable //implements MustVerifyEmail
 {
-    use Notifiable, HasApiTokens, LogsActivity, SoftDeletes, CascadeSoftDeletes;
+    use Notifiable, HasApiTokens, LogsActivity, SoftDeletes, CascadeSoftDeletes, HasRoles;
 
 
     /**
