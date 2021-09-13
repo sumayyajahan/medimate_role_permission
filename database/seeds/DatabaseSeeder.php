@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
         // factory(Job::class, 20)->create();
         // factory(Branch::class, 20)->create();
         $this->call(UserSeeder::class);
+        $this->call(RolePermissionSeeder::class);
         // $this->call(ContactFeedbackSeeder::class);
     }
 }
