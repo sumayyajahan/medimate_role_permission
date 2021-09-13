@@ -27,13 +27,18 @@ $factory->define(User::class, function (Faker $faker) {
      $email = ["a@a.com","b@b.com","c@c.com"];
      $mobile = ["1", "2", "3"];
     return  [
-            'name' => $name[++$nameIntervals],
-            'referral_code' => $name[++$referralIntervals],
+            // 'name' => $name[++$nameIntervals],
+            'name' => $faker->name,
+
+            // 'referral_code' => $name[++$referralIntervals],
+            'name' => $faker->name,
 
             'userid' => $faker->numberBetween(1, 2000000000),
             // 'details' => $faker->paragraph,
-            'email' => $email[++$emailIntervals],
-            'mobile' => ++$mobileInterval,
+            // 'email' => $email[++$emailIntervals],
+            'email' => $faker->unique()->safeEmail,
+            // 'mobile' => ++$mobileInterval,
+            'mobile' => $faker->phoneNumber,
             // 'phone' => $faker->numberBetween(1000000000, 2000000000),
             'address' => $faker->address,
             'image' => "15791434845e1fd13c9cf18.jpg",

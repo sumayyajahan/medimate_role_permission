@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         // factory(Testimonial::class, 20)->create();
         // factory(Job::class, 20)->create();
         // factory(Branch::class, 20)->create();
-        // $this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
         // $this->call(ContactFeedbackSeeder::class);
     }
 }

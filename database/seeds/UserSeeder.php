@@ -12,18 +12,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::
-        if(is_null($user))){
+        $user = User::where('email', 'admin@admin.com')->first();
+        if(is_null($user)){
             $user = new User();
             $user->name = "admin";
-            $user->email = "admin@admin";
+            $user->email = "admin@admin.com";
+            $user->userid = "10101020";
             $user->password = "12345678";
             $user->save();
         }
 
 
 
-        factory(User::class, 30)->create();
+        factory(User::class, 3)->create();
         // factory(User::class,3)->create();
     }
 }
