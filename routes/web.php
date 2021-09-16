@@ -66,6 +66,11 @@ Route::namespace('Frontend')->group(function () {
 });
 // Icons
 // ********************************USER********************************
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::resource('roles', 'RolesController');
+
+}
 
 Auth::routes();
 // Auth::routes(['verify' => true]);
