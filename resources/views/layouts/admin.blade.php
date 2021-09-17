@@ -64,7 +64,9 @@
                       </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                           Activities -->
                             </a>
+
                             @if ($admin->role =="Super Admin")
+
                             <a href="{{route('admin.admins.index')}}" class="dropdown-item has-icon"> <i
                                     class="fas fa-cog"></i>
                                 Manage Admin
