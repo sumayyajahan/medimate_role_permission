@@ -83,6 +83,7 @@ Route::prefix('user')->group(function () {
         Route::namespace('User')->group(function () {
             Route::group(['middleware' => ['auth', 'preventBackHistory']], function () {
                 //dashboard
+
                 Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
                 //User Profile
                 Route::get('change-password', 'ProfileController@changePasswordView')->name('change.password');
@@ -98,6 +99,7 @@ Route::prefix('user')->group(function () {
 //admin Login, logout, forget password routes
 Route::prefix('rt-admin')->group(function () {
     Route::name('admin.')->group(function () {
+
         Route::get('login', 'Auth\Admin\LoginController@showLoginForm')->name('login');
         Route::post('login', 'Auth\Admin\LoginController@login');
         Route::post('logout', 'Auth\Admin\LoginController@logout')->name('logout');
@@ -116,6 +118,8 @@ Route::prefix('rt-admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::namespace('Admin')->group(function () {
             Route::group(['middleware' => ['auth:admin', 'preventBackHistory']], function () {
+
+                Route::resource('roles', 'RolesController');
                 // Dashboard
                 Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
                 //change password
