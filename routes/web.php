@@ -120,6 +120,11 @@ Route::prefix('rt-admin')->group(function () {
             Route::group(['middleware' => ['auth:admin', 'preventBackHistory']], function () {
 
                 Route::resource('roles', 'RolesController');
+                Route::resource('permissions', 'PermissionController');
+                Route::get('assignPermission','RolesController@assignPermission')->name('assignPermission');
+                Route::post('storePermissionToRole','RolesController@storePermissionToRole')->name('storePermissionToRole');
+                Route::get('assignRole','RolesController@assignRole')->name('assignRole');
+                Route::post('storeRoleToAdmin','RolesController@storeRoleToAdmin')->name('storeRoleToAdmin');
                 // Dashboard
                 Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
                 //change password

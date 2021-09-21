@@ -15,14 +15,18 @@ class RolePermissionSeeder extends Seeder
     {
        //Create Roles
        $roleAdmin = Role::create(['name' => 'admin']);
-       $roleSuperAdmin = Role::create(['name' => 'superadmin']);
        $roleUser = Role::create(['name' => 'user']);
-       $roleEditor = Role::create(['name' => 'editor']);
+       $roleAccount = Role::create(['name' => 'account']);
+       $roleDoctor = Role::create(['name' => 'doctor']);
+       $roleInsurance = Role::create(['name' => 'inurance']);
+       $roleInstitutionalClient = Role::create(['name' => 'institutionalClient']);
 
        //Permission List as array
        $permissions = [
-           'blogs.create',
-           'contact.create',
+           'create ambulances',
+           'edit ambulances',
+           'delete ambulances',
+           'view ambulances',
        ];
 
        //Assign Permissions

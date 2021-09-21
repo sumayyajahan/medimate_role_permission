@@ -2,14 +2,14 @@
 @extends('layouts.admin')
 @section('title','Roles')
 @section('content')
-    @include('includes.banner',['one'=>'Roles','two'=>'View'])
+    @include('includes.banner',['one'=>'Permissions','two'=>'View'])
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="justify-content: space-between;">
-                        <b style="font-size:large;">Manage Role</b>
-                        <span><a class="btn btn-success" href="{{route('admin.roles.create')}}">Add New Role</a></span>
+                        <b style="font-size:large;">Manage Permissions</b>
+                        <span><a class="btn btn-success" href="{{route('admin.permissions.create')}}">Add New Role</a></span>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -17,15 +17,15 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Role Name</th>
+                                        <th>Permission Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($roles as $role)
+                                    @foreach($permissions as $permission)
                                     <tr>
-                                        <td>{{$role->id}}</td>
-                                        <td>{{$role->name}}</td>
+                                        <td>{{$permission->id}}</td>
+                                        <td>{{$permission->name}}</td>
                                         <td>
                                         <button class="btn btn-sm btn-primary">Edit</button>
                                         <button class="btn btn-sm btn-danger">Del</button>

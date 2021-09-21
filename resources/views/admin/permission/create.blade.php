@@ -2,17 +2,17 @@
 @extends('layouts.admin')
 @section('title','Add Role')
 @section('content')
-   @include('includes.banner',['one'=>'Roles','two'=>'Create'])
+   @include('includes.banner',['one'=>'Permissions','two'=>'Create'])
 
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form  class="form-group" action="{{route('admin.roles.store')}}" method="post"
+                <form  class="form-group" action="{{route('admin.permissions.store')}}" method="post"
                        enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add New Role</h4>
+                            <h4>Add New Permission</h4>
                         </div>
                         <div class="card-body">
 
