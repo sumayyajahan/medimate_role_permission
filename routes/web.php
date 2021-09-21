@@ -68,7 +68,7 @@ Route::namespace('Frontend')->group(function () {
 // ********************************USER********************************
 
 
-
+    Route::resource('rt-admin/roles', 'Roles\RolesController');
 
 
 
