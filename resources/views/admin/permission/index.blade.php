@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header" style="justify-content: space-between;">
                         <b style="font-size:large;">Manage Permissions</b>
-                        <span><a class="btn btn-success" href="{{route('admin.permissions.create')}}">Add New Role</a></span>
+                        <span><a class="btn btn-success" href="{{route('admin.permissions.create')}}">Add New Permission</a></span>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

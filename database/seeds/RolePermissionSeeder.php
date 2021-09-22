@@ -14,12 +14,12 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
        //Create Roles
-       $roleAdmin = Role::create(['name' => 'admin']);
-       $roleUser = Role::create(['name' => 'user']);
-       $roleAccount = Role::create(['name' => 'account']);
-       $roleDoctor = Role::create(['name' => 'doctor']);
-       $roleInsurance = Role::create(['name' => 'inurance']);
-       $roleInstitutionalClient = Role::create(['name' => 'institutionalClient']);
+       $roleAdmin = Role::create(['gaurd_name'=>'admin','name' => 'admin']);
+       $roleUser = Role::create(['gaurd_name'=>'admin','name' => 'user']);
+       $roleAccount = Role::create(['gaurd_name'=>'admin','name' => 'account']);
+       $roleDoctor = Role::create(['gaurd_name'=>'admin','name' => 'doctor']);
+       $roleInsurance = Role::create(['gaurd_name'=>'admin','name' => 'inurance']);
+       $roleInstitutionalClient = Role::create(['gaurd_name'=>'admin','name' => 'institutionalClient']);
 
        //Permission List as array
        $permissions = [
@@ -229,7 +229,7 @@ class RolePermissionSeeder extends Seeder
        //Assign Permissions
        for($i=0; $i< count($permissions); $i++){
 
-        $permission = Permission::create(['name' => $permissions[$i]]);
+        $permission = Permission::create(['gaurd_name'=>'admin','name' => $permissions[$i]]);
         $roleAdmin->givePermissionTo($permission);
         $permission->assignRole($roleAdmin);
 
