@@ -44,20 +44,17 @@
                                             <td>{{ $doctor->department }}</td>
 
                                             <td class="d-flex">
+                                                @can('view doctors')
                                                 <a href="{{ route('admin.doctor.show', $doctor->id) }}"> <button
                                                         class="m-1 btn btn-white"> <img src="/icons/view.png"
                                                             style="width:50px;"></button></a>
-                                                            @role('Doctor')
-                                                            I am a Doctor!
-                                                        @else
-                                                            I am not a Doctor...
-                                                        @endrole
-                                                @can('doctors.edit')
+                                                @endcan
+                                                @can('edit doctors')
                                                     <a href="{{ route('admin.doctor.edit', $doctor->id) }}"> <button
                                                             class="m-1 btn btn-white"> <img src="/icons/edit.png"
                                                                 style="width:50px;"></button></a>
                                                 @endcan
-
+                                                @can('delete doctors')
                                                 <a class="m-1 btn btn-white" href="#"
                                                     onclick="if (confirm('Are you sure to delete?')){document.getElementById('delete-form-{{ $doctor->id }}').submit();}else{event.preventDefault()}">
                                                     <img src="/icons/discard.png" style="width:50px;"></a>
@@ -67,6 +64,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
