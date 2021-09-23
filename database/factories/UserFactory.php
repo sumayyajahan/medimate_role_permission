@@ -33,7 +33,7 @@ $factory->define(User::class, function (Faker $faker) {
             'referral_code' => $name[++$referralIntervals],
              //'name' => $faker->name,
 
-            //'userid' => $faker->numberBetween(1, 2000000000),
+            'userid' => $faker->numberBetween(1, 2000000000),
             //'details' => $faker->paragraph,
             'email' => $email[++$emailIntervals],
             //'email' => $faker->unique()->safeEmail,

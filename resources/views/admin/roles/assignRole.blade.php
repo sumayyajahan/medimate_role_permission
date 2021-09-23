@@ -17,11 +17,11 @@
                         <div class="card-body">
 
                             <div class="form-group">
-                                <label>Select Admin</label>
+                                <label>Select User</label>
                                 <select name="admin_id" id="admin_id" class="form-control">
-                                    <option value="">-select admin-</option>
-                                    @foreach ($admins as $admin)
-                                        <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                                    <option value="">-select user-</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

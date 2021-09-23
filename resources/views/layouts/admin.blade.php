@@ -65,13 +65,14 @@
                           Activities -->
                             </a>
 
-                            @if ($admin->role =="Super Admin")
-
+                            {{-- @if ($admin->role =="Super Admin") --}}
+                            @role('Super Admin')
                             <a href="{{route('admin.admins.index')}}" class="dropdown-item has-icon"> <i
                                     class="fas fa-cog"></i>
                                 Manage Admin
                             </a>
-                            @endif
+                            @endrole
+                            {{-- @endif --}}
                             <a href="{{route('admin.change.password')}}" class="dropdown-item has-icon"> <i
                                     class="fas fa-cog"></i>
                                 Change Password

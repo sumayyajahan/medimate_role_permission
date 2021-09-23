@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -14,12 +15,13 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
        //Create Roles
-       $roleAdmin = Role::create(['gaurd_name'=>'admin','name' => 'admin']);
-       $roleUser = Role::create(['gaurd_name'=>'admin','name' => 'user']);
-       $roleAccount = Role::create(['gaurd_name'=>'admin','name' => 'account']);
-       $roleDoctor = Role::create(['gaurd_name'=>'admin','name' => 'doctor']);
-       $roleInsurance = Role::create(['gaurd_name'=>'admin','name' => 'inurance']);
-       $roleInstitutionalClient = Role::create(['gaurd_name'=>'admin','name' => 'institutionalClient']);
+       $roleSuperAdmin = Role::create(['guard_name'=>'admin','name' => 'Super Admin']);
+       $roleAdmin = Role::create(['guard_name'=>'admin','name' => 'admin']);
+       $roleUser = Role::create(['guard_name'=>'admin','name' => 'user']);
+       $roleAccount = Role::create(['guard_name'=>'admin','name' => 'account']);
+       $roleDoctor = Role::create(['guard_name'=>'admin','name' => 'doctor']);
+       $roleInsurance = Role::create(['guard_name'=>'admin','name' => 'inurance']);
+       $roleInstitutionalClient = Role::create(['guard_name'=>'admin','name' => 'institutionalClient']);
 
        //Permission List as array
        $permissions = [
@@ -175,10 +177,6 @@ class RolePermissionSeeder extends Seeder
            'edit report_prescriptions',
            'delete report_prescriptions',
            'view report_prescriptions',
-           'create pharmacy_salesmen',
-           'edit pharmacy_salesmen',
-           'delete pharmacy_salesmen',
-           'view pharmacy_salesmen',
            'create service_providers',
            'edit service_providers',
            'delete service_providers',
@@ -229,10 +227,12 @@ class RolePermissionSeeder extends Seeder
        //Assign Permissions
        for($i=0; $i< count($permissions); $i++){
 
-        $permission = Permission::create(['gaurd_name'=>'admin','name' => $permissions[$i]]);
+        $permission = Permission::create(['guard_name'=>'admin','name' => $permissions[$i]]);
         $roleAdmin->givePermissionTo($permission);
         $permission->assignRole($roleAdmin);
 
        }
+       $superAdmin=Admin::first();
+       $superAdmin->assignRole("Super Admin");
     }
 }
