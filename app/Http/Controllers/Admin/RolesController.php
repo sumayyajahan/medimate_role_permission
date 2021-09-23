@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -112,17 +111,17 @@ class RolesController extends Controller
 
     public function assignRole()
     {
-        $users=User::all();
+        $admins=Admin::all();
         $roles=Role::all();
-        return view("admin.roles.assignRole",compact('users','roles'));
+        return view("admin.roles.assignRole",compact('admins','roles'));
     }
 
     public function storeRoleToAdmin(Request $request)
     {
-        $user=User::find($request->admin_id);
+        $admin=Admin::find($request->admin_id);
         $role=Role::find($request->role_id);
 
-        $user->assignRole($role->name);
+        $admin->assignRole($role->name);
 
         return redirect("rt-admin/assignRole")->with("success","Role Assigned to Admin Successfully.");
 

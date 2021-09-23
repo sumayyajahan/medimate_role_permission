@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -15,7 +14,7 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
        //Create Roles
-       $roleSuperAdmin = Role::create(['guard_name'=>'admin','name' => 'Super Admin']);
+       $roleSuperAdmin = Role::create(['guard_name'=>'admin','name' => 'SuperAdmin']);
        $roleAdmin = Role::create(['guard_name'=>'admin','name' => 'admin']);
        $roleUser = Role::create(['guard_name'=>'admin','name' => 'user']);
        $roleAccount = Role::create(['guard_name'=>'admin','name' => 'account']);
@@ -232,7 +231,7 @@ class RolePermissionSeeder extends Seeder
         $permission->assignRole($roleAdmin);
 
        }
-       $superAdmin=Admin::first();
-       $superAdmin->assignRole("Super Admin");
+
+       $roleSuperAdmin->assignRole("Super Admin");
     }
 }

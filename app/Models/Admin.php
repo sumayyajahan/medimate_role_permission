@@ -56,6 +56,7 @@ class Admin extends Authenticatable
         $this->notify(new AdminResetPasswordQueue($token));
     }
 
+
     public function createdBy()
     {
         return $this->belongsTo(Admin::class, 'admin_id');
