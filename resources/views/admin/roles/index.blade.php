@@ -27,8 +27,8 @@
                                         <td>{{$role->id}}</td>
                                         <td>{{$role->name}}</td>
                                         <td>
-                                        <button class="btn btn-sm btn-primary">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Del</button>
+                                        <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
                                         </td>
                                     </tr>
                                     @endforeach
