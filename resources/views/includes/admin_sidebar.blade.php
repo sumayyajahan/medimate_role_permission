@@ -258,44 +258,90 @@
         </li> --}}
 
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Moderator' || $admin->role == 'Service Administration') --}}
+            @if (auth()->user()->can('create service_provider_comissions') &&
+    auth()->user()->can('create referral_points') &&
+    auth()->user()->can('view service_provider_comissions')
+    auth()->user()->can('create user_wallets') &&
+    auth()->user()->can('create service_provider_wallets') &&
+    auth()->user()->can('create bkash_recharge_requests') &&
+    auth()->user()->can('create service_providers') &&
+    auth()->user()->can('view user_wallets') &&
+    auth()->user()->can('view service_provider_wallets') &&
+    auth()->user()->can('create cashouts') &&
+    auth()->user()->can('create doctor_wallets') &&
+    auth()->user()->can('view doctor_wallets') )
 
             <li class="menu-header">Points</li>
             <li class="dropdown">
+                @can('create service_provider_comissions')
                 <a href="{{ route('admin.comissions') }}"><i data-feather="dollar-sign"></i><span>Service
                         Charge</span></a>
+                @endcan
+                @can('create referral_points')
                 <a href="{{ route('admin.referral.point') }}"><i data-feather="dollar-sign"></i><span>Referral
                         Points
                     </span></a>
+                @endcan
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="dollar-sign"></i><span>Points</span></a>
                 <ul class="dropdown-menu">
                     {{-- <li><a class="nav-link" href="route('admin.recharge') }}}">Point Recharge</a>
-        </li> --}}
+        </li> --}}  @can('create user_wallets')
                     <li><a class="nav-link" href="{{ route('admin.user-wallet.create') }}">Add User
                             Point</a>
                     </li>
+                    @endcan
+                    @can('create service_provider_wallets')
                     <li><a class="nav-link" href="{{ route('admin.service-wallet.create') }}">Add Service
                             Provider Point</a></li>
+                    @endcan
+                    @can('create bkash_recharge_requests')
                     <li><a class="nav-link" href="{{ route('admin.bkash') }}">Cash-In Requests (bKash)</a>
                     </li>
+                    @endcan
+                    @can('create service_provider_wallets')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.bkash') }}">Service
                             Provider Cash-In Requests
                             (bKash)</a></li>
+                    @endcan
+                    @can('view user_wallets')
                     <li><a class="nav-link" href="{{ route('admin.user-wallet.index') }}">Manage User
                             Point</a></li>
+                    @endcan
+                    @can('create service_provider_wallets')
                     <li><a class="nav-link" href="{{ route('admin.service-wallet.index') }}">Manage Service
                             Provider Point</a>
                     </li>
+                    @endcan
+                    @can('create cashouts')
                     <li><a class="nav-link" href="{{ route('admin.cashout.req') }}">Cash-Out Request</a>
                     </li>
+                    @endcan
+                    @can('create doctor_wallets')
                     <li><a class="nav-link" href="{{ route('admin.doctor-wallet.create') }}">Cash Out</a>
                     </li>
+                    @endcan
+                    @can('view doctor_wallets')
                     <li><a class="nav-link" href="{{ route('admin.doctor-wallet.index') }}">Manage Doctor
                             Point</a></li>
+                    @endcan
                 </ul>
             </li>
+            @endif
             {{-- @endif --}}
 
+            @if (auth()->user()->can('create bkash_recharge_requests') &&
+    auth()->user()->can('create referral_points') &&
+    auth()->user()->can('view service_provider_comissions')
+    auth()->user()->can('create user_wallets') &&
+    auth()->user()->can('create service_provider_wallets') &&
+    auth()->user()->can('create bkash_recharge_requests') &&
+    auth()->user()->can('create service_providers') &&
+    auth()->user()->can('view user_wallets') &&
+    auth()->user()->can('view service_provider_wallets') &&
+    auth()->user()->can('create cashouts') &&
+    auth()->user()->can('create doctor_wallets') &&
+    auth()->user()->can('view doctor_wallets') )
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Moderator' || $admin->role == 'Service Administration') --}}
             <li class="menu-header">Reports</li>
             <li class="dropdown">
@@ -311,10 +357,12 @@
                         </a></li>
                     <li><a class="nav-link" href="{{ route('admin.report.referral', 'doctor') }}">Doctor
                             Referral </a></li>
+                    @can('create service_providers')
                     <li><a class="nav-link"
                             href="{{ route('admin.report.referral', 'service-provider') }}">Service Provider
                             Referral
                         </a></li>
+                    @endcan
                     <li><a class="nav-link" href="{{ route('admin.report.sales') }}">Sales Report</a></li>
                     <li><a class="nav-link" href="{{ route('admin.most-freq-doc') }}">Most Frequent
                             Doctor</a></li>
@@ -342,6 +390,7 @@
         <li><a class="nav-link" href="{{route('admin.top-search-products')}}">Top Search Products</a></li> --}}
                 </ul>
             </li>
+            @endif
             {{-- @endif --}}
 
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Moderator' || $admin->role == 'Service Administration') --}}
