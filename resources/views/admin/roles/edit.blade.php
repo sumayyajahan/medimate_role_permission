@@ -7,9 +7,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form  class="form-group" action="{{route('admin.roles.store')}}" method="post"
-                       enctype="multipart/form-data">
-                    @csrf
+
                     <div class="card">
                         <div class="card-header">
                             <h4>Update Role</h4>
@@ -17,7 +15,7 @@
                         <div class="card-body">
                           <form action="{{ route('admin.roles.update', $role->id) }}" method="PUT" enctype="multipart/form-data">
                             @csrf
-                            {{-- @method('PUT') --}}
+                            @method('PUT')
                             <div class="form-group">
                                 <label>Name</label>
                                 <input value="{{ $role->name }}" type="text" class="form-control" name="name" required>
@@ -29,7 +27,7 @@
                             <button class="btn btn-primary mr-1" type="submit">Update</button>
                         </div>
                     </div>
-                </form>
+
             </div>
         </div>
     </div>

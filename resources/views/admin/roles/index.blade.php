@@ -31,7 +31,7 @@
                                         <form action="{{ route('admin.roles.destroy', $role->id) }}" id="form_submit{{$role->id}}" method="POST" class="form-inline" style="display:inline">
                                          @csrf
                                          @method('DELETE')
-                                        <a href="javascript:void(0)" onclick="document.getElementById('form_submit{{$role->id}}').submit()" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="javascript:void(0)" onclick="document.getElementById('form_submit{{$role->id}}').submit()" class="btn btn-sm btn-danger">Del</a>
                                         </form>
                                         </td>
                                     </tr>

@@ -60,7 +60,9 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+
+        return view('admin.permission.edit', compact('permission'));
     }
 
     /**
@@ -72,7 +74,11 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permission = Permission::findOrFail($request->permission_id);
+        $permission->name = $request->name;
+        $permission->save();
+
+        return redirect()->route('admin.permissions.index')->with('success',"permission updated successfully.");
     }
 
     /**
@@ -83,6 +89,11 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
+
+        return redirect()->route('admin.permissions.index')->with('success',"permission deleted successfully.");
+
+
     }
 }

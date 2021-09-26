@@ -27,8 +27,12 @@
                                         <td>{{$permission->id}}</td>
                                         <td>{{$permission->name}}</td>
                                         <td>
-                                        <button class="btn btn-sm btn-primary">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Del</button>
+                                        <a href="{{ route('admin.permissions.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('admin.permissions.destroy', $permission->id) }}" method="post" id="form_submit{{ $permission->id }}" class="form-inline" style="display:inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="javascript:void(0)" onclick="document.getElementById('form_submit{{ $permission->id }}').submit()" class="btn btn-sm btn-danger">Del</a>
+                                        </form>
                                         </td>
                                     </tr>
                                     @endforeach
