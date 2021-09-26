@@ -28,7 +28,11 @@
                                         <td>{{$role->name}}</td>
                                         <td>
                                         <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <form action="{{ route('admin.roles.destroy', $role->id) }}" id="form_submit{{$role->id}}" method="POST" class="form-inline" style="display:inline">
+                                         @csrf
+                                         @method('DELETE')
+                                        <a href="javascript:void(0)" onclick="document.getElementById('form_submit{{$role->id}}').submit()" class="btn btn-sm btn-danger">Delete</a>
+                                        </form>
                                         </td>
                                     </tr>
                                     @endforeach
