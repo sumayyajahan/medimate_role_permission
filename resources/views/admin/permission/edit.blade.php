@@ -7,7 +7,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
-                <form  class="form-group" action="{{route('admin.permissions.update', $permission->id )}}" method="post"
+                <form class="form-group" action="{{route('admin.permissions.update', $permission->id )}}" method="post"
                        enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input value="{{ $permission->name }}" type="text" class="form-control" name="name" required>
-                                <input type="hidden" id="permission_id" value="{{ $permission->id }}">
+                                
                                 <span class="badge badge-pill badge-success mt-3">
                                     @php
                                        use App\Models\Admin;
@@ -29,8 +29,6 @@
                                     @endphp
                                 </span>
                             </div>
-
-
                         </div>
                         <div class="card-footer text-left">
                             <button class="btn btn-primary mr-1" type="submit">Update</button>

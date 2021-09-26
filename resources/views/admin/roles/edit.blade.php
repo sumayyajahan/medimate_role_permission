@@ -1,6 +1,6 @@
 <!-- Created by Ariful Islam at 6/6/2021 - 11:27 AM -->
 @extends('layouts.admin')
-@section('title','Add Role')
+@section('title','Update Role')
 @section('content')
    @include('includes.banner',['one'=>'Roles','two'=>'Create'])
 
@@ -13,19 +13,20 @@
                             <h4>Update Role</h4>
                         </div>
                         <div class="card-body">
-                          <form action="{{ route('admin.roles.update', $role->id) }}" method="PUT" enctype="multipart/form-data">
+                          <form action="{{ route('admin.roles.update', $role->id) }}" method="POST"  enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label>Name</label>
                                 <input value="{{ $role->name }}" type="text" class="form-control" name="name" required>
-                                <input type="hidden" value="{{ $role->id }}" id="edit_id">
+
+                            </div>
+                            <div class="card-footer text-left">
+                                <button class="btn btn-primary mr-1" type="submit">Update</button>
                             </div>
                          </form>
                         </div>
-                        <div class="card-footer text-left">
-                            <button class="btn btn-primary mr-1" type="submit">Update</button>
-                        </div>
+
                     </div>
 
             </div>

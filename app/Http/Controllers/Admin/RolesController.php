@@ -72,7 +72,8 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role = Role::findOrFail($request->edit_id);
+
+        $role = Role::findOrFail($id);
         $role->name = $request->name;
         $role->save();
         return redirect()->route('admin.roles.index')->with('success', 'Successfully Updated.');

@@ -74,7 +74,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permission = Permission::findOrFail($request->permission_id);
+        $permission = Permission::findOrFail($id);
         $permission->name = $request->name;
         $permission->save();
 
