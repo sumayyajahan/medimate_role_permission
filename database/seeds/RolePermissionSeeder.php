@@ -229,7 +229,6 @@ class RolePermissionSeeder extends Seeder
         $permission = Permission::create(['guard_name'=>'admin','name' => $permissions[$i]]);
         $roleAdmin->givePermissionTo($permission);
         $permission->assignRole($roleAdmin);
-
        }
 
        $permission->assignRole($roleSuperAdmin);
