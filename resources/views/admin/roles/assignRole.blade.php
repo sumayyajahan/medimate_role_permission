@@ -2,7 +2,7 @@
 @extends('layouts.admin')
 @section('title', 'Add Role')
 @section('content')
-    @include('includes.banner',['one'=>'Assign Role to Admin','two'=>'Create'])
+    @include('includes.banner',['one'=>'Assign Role to User','two'=>'Create'])
 
     <div class="section-body">
         <div class="row">
@@ -12,16 +12,16 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4>Assign Role to Admin</h4>
+                            <h4>Assign Role to User</h4>
                         </div>
                         <div class="card-body">
 
                             <div class="form-group">
-                                <label>Select Admin</label>
-                                <select name="admin_id" id="admin_id" class="form-control">
-                                    <option value="">-select admin-</option>
-                                    @foreach ($admins as $admin)
-                                        <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                                <label>Select User</label>
+                                <select name="user_id" id="user_id" class="form-control">
+                                    <option value="">-select user-</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

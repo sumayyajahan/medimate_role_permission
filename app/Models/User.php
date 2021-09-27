@@ -24,6 +24,8 @@ class User extends Authenticatable //implements MustVerifyEmail
      *
      * @var array
      */
+    protected $guard_name = 'admin';
+
     protected $fillable = [
         'name',
         'email',
@@ -48,6 +50,7 @@ class User extends Authenticatable //implements MustVerifyEmail
         'password',
         'view_password',
         'service_by',
+
     ];
 
     protected $cascadeDeletes = ['wallet', 'walletTransactionLogs', 'appointmentSchedules', 'bkashRechargeRequests', 'ePrescriptions', 'notifications', 'referralHistories', 'referByHistory', 'reportPrescriptions', 'userOrders'];
