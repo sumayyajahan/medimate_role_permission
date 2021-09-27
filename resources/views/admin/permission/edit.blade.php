@@ -1,6 +1,6 @@
 <!-- Created by Ariful Islam at 6/6/2021 - 11:27 AM -->
 @extends('layouts.admin')
-@section('title','Add Role')
+@section('title','Update Permission')
 @section('content')
    @include('includes.banner',['one'=>'Permissions','two'=>'Create'])
 
@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input value="{{ $permission->name }}" type="text" class="form-control" name="name" required>
-                                
+
                                 <span class="badge badge-pill badge-success mt-3">
                                     @php
                                        use App\Models\Admin;

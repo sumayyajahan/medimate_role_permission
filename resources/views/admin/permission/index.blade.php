@@ -1,6 +1,6 @@
 <!-- Created by Ariful Islam at 6/6/2021 - 11:27 AM -->
 @extends('layouts.admin')
-@section('title','Roles')
+@section('title','Permissions')
 @section('content')
     @include('includes.banner',['one'=>'Permissions','two'=>'View'])
     <div class="section-body">
