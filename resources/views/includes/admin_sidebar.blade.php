@@ -368,40 +368,62 @@
                 <ul class="dropdown-menu">
                     {{-- <li><a class="nav-link" href="{{route('admin.user.activity')}}">User Activity</a>
         </li> --}}
+                    @can('view bkash_recharge_requests')
                     <li><a class="nav-link" href="{{ route('admin.report.recharge') }}">User Payment
                             (Recharge) </a></li>
+                    @endcan
+                    @can('view referral_points')
                     <li><a class="nav-link" href="{{ route('admin.report.referral', 'user') }}">User
                             Referral
                         </a></li>
+                    @endcan
+                    @can('view referral_points')
                     <li><a class="nav-link" href="{{ route('admin.report.referral', 'doctor') }}">Doctor
                             Referral </a></li>
-
+                    @endcan
+                    @can('view service_providers')
                     <li><a class="nav-link"
                             href="{{ route('admin.report.referral', 'service-provider') }}">Service Provider
                             Referral
                         </a></li>
-
+                    @endcan
+                    @can('view report_prescriptions')
                     <li><a class="nav-link" href="{{ route('admin.report.sales') }}">Sales Report</a></li>
+                    @endcan
+                    @can('view report_prescriptions')
                     <li><a class="nav-link" href="{{ route('admin.most-freq-doc') }}">Most Frequent
                             Doctor</a></li>
+                    @endcan
+                    @can('view user_orders')
                     <li><a class="nav-link" href="{{ route('admin.latest-orders') }}">Latest Orders</a>
                     </li>
+                    @endcan
+                    @can('view user_wallets')
                     <li><a class="nav-link" href="{{ route('admin.user.wallet.log') }}">Patient Transaction
                             History</a></li>
+                    @endcan
+                    @can('view doctor_wallets')
                     <li><a class="nav-link" href="{{ route('admin.doctor.wallet.log') }}">Doctor
                             Transaction
                             History</a></li>
+                    @endcan
+                    @can('view service_providers')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.wallet.log') }}">Service
                             provider
                             Transaction History</a></li>
+                    @endcan
                     {{-- <li><a class="nav-link" href="{{route('admin.service-provider.recharge.log')}}">Service provider
         Recharge History</a></li> --}}
+                    @can('view service_providers')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.comission.log') }}">Service
                             provider
                             Comission History</a></li>
+                    @endcan
+                    @can('view service_providers')
                     <li><a class="nav-link" href="{{ route('admin.report.wallet.log') }}">Medimate
                             Commission
                             History</a></li>
+                    @endcan
 
                     {{-- <li><a class="nav-link" href="{{route('admin.non-performing-products')}}">Non-Performing Products</a>
         </li>
