@@ -30,7 +30,7 @@
             @if (auth()->user()->can('create users') &&
     auth()->user()->can('create doctors') &&
     auth()->user()->can('create pharmacies') &&
-    auth()->user()->can('create service_providers'))
+    auth()->user()->can('create pharmacy-salesman'))
                 <li class="menu-header">Account Administration</li>
                 <li class="dropdown" style="display: none;">
                     <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="plus"></i><span>Add
@@ -45,11 +45,11 @@
                         @can('create pharmacies')
                             <li><a class="nav-link" href="{{ route('admin.pharmacy.create') }}">Pharmacy</a></li>
                         @endcan
-
+                        @can('create pharmacy-salesman')
                         <li><a class="nav-link" href="{{ route('admin.pharmacy-salesman.create') }}">Pharmacy
                                 Sale
-                                Rep.</a>
-
+                                Rep.</a></li>
+                        @endcan
                         <li><a class="nav-link" href="">Service Provider</a>
                         </li>
                     </ul>
