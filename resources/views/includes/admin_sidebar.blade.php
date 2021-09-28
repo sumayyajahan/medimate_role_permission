@@ -296,8 +296,9 @@
                 auth()->user()->can('view user_wallets') &&
                 auth()->user()->can('create service_provider_wallets') &&
             auth()->user()->can('view service_provider_wallets') &&
-            auth()->user()->can('view bkash_recharge_requests') &&
             auth()->user()->can('view cashouts') &&
+            auth()->user()->can('bkash') &&
+            auth()->user()->can('bkash service-provider') &&
             auth()->user()->can('create doctor_wallets') &&
             auth()->user()->can('view doctor_wallets'))
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -315,11 +316,11 @@
                     <li><a class="nav-link" href="{{ route('admin.service-wallet.create') }}">Add Service
                             Provider Point</a></li>
                     @endcan
-                    @can('view bkash_recharge_requests')
+                    @can('bkash')
                     <li><a class="nav-link" href="{{ route('admin.bkash') }}">Cash-In Requests (bKash)</a>
                     </li>
                     @endcan
-                    @can('edit bkash_recharge_requests')
+                    @can('bkash service-provider')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.bkash') }}">Service
                             Provider Cash-In Requests
                             (bKash)</a></li>
@@ -351,14 +352,18 @@
             @endif
 
             {{-- @endif --}}
-            @if(auth()->user()->can('create bkash_recharge_requests') &&
-                auth()->user()->can('view user_wallets') &&
-                auth()->user()->can('create service_provider_wallets') &&
-            auth()->user()->can('view service_provider_wallets') &&
-            auth()->user()->can('view bkash_recharge_requests') &&
-            auth()->user()->can('view cashouts') &&
-            auth()->user()->can('create doctor_wallets') &&
-            auth()->user()->can('view doctor_wallets'))
+            @if(auth()->user()->can('report recharge') &&
+                auth()->user()->can('report referral user') &&
+                auth()->user()->can('report referral doctor') &&
+            auth()->user()->can('report referral service-provider') &&
+            auth()->user()->can('report sales') &&
+            auth()->user()->can('most-freq-doc') &&
+            auth()->user()->can('latest-orders') &&
+            auth()->user()->can('log user_wallets') &&
+            auth()->user()->can('log doctor_wallets') &&
+            auth()->user()->can('log service_providers') &&
+            auth()->user()->can('comission log service_providers') &&
+            auth()->user()->can('log report wallet'))
 
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Moderator' || $admin->role == 'Service Administration') --}}
             <li class="menu-header">Reports</li>
@@ -368,58 +373,58 @@
                 <ul class="dropdown-menu">
                     {{-- <li><a class="nav-link" href="{{route('admin.user.activity')}}">User Activity</a>
         </li> --}}
-                    @can('view bkash_recharge_requests')
+                    @can('report recharge')
                     <li><a class="nav-link" href="{{ route('admin.report.recharge') }}">User Payment
                             (Recharge) </a></li>
                     @endcan
-                    @can('view referral_points')
+                    @can('report referral user')
                     <li><a class="nav-link" href="{{ route('admin.report.referral', 'user') }}">User
                             Referral
                         </a></li>
                     @endcan
-                    @can('view referral_points')
+                    @can('report referral doctor')
                     <li><a class="nav-link" href="{{ route('admin.report.referral', 'doctor') }}">Doctor
                             Referral </a></li>
                     @endcan
-                    @can('view service_providers')
+                    @can('report referral service-provider')
                     <li><a class="nav-link"
                             href="{{ route('admin.report.referral', 'service-provider') }}">Service Provider
                             Referral
                         </a></li>
                     @endcan
-                    @can('view report_prescriptions')
+                    @can('report sales')
                     <li><a class="nav-link" href="{{ route('admin.report.sales') }}">Sales Report</a></li>
                     @endcan
-                    @can('view report_prescriptions')
+                    @can('most-freq-doc')
                     <li><a class="nav-link" href="{{ route('admin.most-freq-doc') }}">Most Frequent
                             Doctor</a></li>
                     @endcan
-                    @can('view user_orders')
+                    @can('latest-orders')
                     <li><a class="nav-link" href="{{ route('admin.latest-orders') }}">Latest Orders</a>
                     </li>
                     @endcan
-                    @can('view user_wallets')
+                    @can('log user_wallets')
                     <li><a class="nav-link" href="{{ route('admin.user.wallet.log') }}">Patient Transaction
                             History</a></li>
                     @endcan
-                    @can('view doctor_wallets')
+                    @can('log doctor_wallets')
                     <li><a class="nav-link" href="{{ route('admin.doctor.wallet.log') }}">Doctor
                             Transaction
                             History</a></li>
                     @endcan
-                    @can('view service_providers')
+                    @can('log service_provider_wallets')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.wallet.log') }}">Service
                             provider
                             Transaction History</a></li>
                     @endcan
                     {{-- <li><a class="nav-link" href="{{route('admin.service-provider.recharge.log')}}">Service provider
         Recharge History</a></li> --}}
-                    @can('view service_providers')
+                    @can('comission log service_providers')
                     <li><a class="nav-link" href="{{ route('admin.service-provider.comission.log') }}">Service
                             provider
                             Comission History</a></li>
                     @endcan
-                    @can('view service_providers')
+                    @can('log report wallet')
                     <li><a class="nav-link" href="{{ route('admin.report.wallet.log') }}">Medimate
                             Commission
                             History</a></li>
@@ -433,40 +438,67 @@
             @endif
 
             {{-- @endif --}}
+            @if(auth()->user()->can('notify') &&
+                auth()->user()->can('view-notifications') &&
+                auth()->user()->can('view app-notify'))
 
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Moderator' || $admin->role == 'Service Administration') --}}
             <li class="menu-header"> Notification </li>
 
+            @can('notify')
             <li><a class="nav-link" href="{{ route('admin.notify') }}"><i data-feather="send"></i><span>Send
                         New</span></a></li>
+            @endcan
+            @can('view-notifications')
             <li><a class="nav-link" href="{{ route('admin.view-notifications') }}"><i
                         data-feather="play"></i><span>View
                         all</span></a>
             </li>
+            @endcan
+            @can('view app-notify')
             <li><a class="nav-link" href="{{ route('admin.app-notify.index') }}"><i
                         data-feather="play"></i><span>App Notification</span></a>
             </li>
+            @endcan
+            @endif
 
             {{-- @endif --}}
             {{-- @if ($admin->role == 'Super Admin' || $admin->role == 'Service Administration') --}}
+            @if(auth()->user()->can('view specialization') &&
+                auth()->user()->can('logs'))
             <li class="menu-header">App Menu</li>
-
-
+            @can('view specialization')
             <li><a class="nav-link" href="{{ route('admin.specialization.index') }}"><i
                         data-feather="git-pull-request"></i><span>Specialization</span></a></li>
+            @endcan
+            @can('logs')
             <li><a class="nav-link" href="{{ route('admin.logs') }}"><i
                         data-feather="rotate-ccw"></i><span>System
                         Logs</span></a></li>
-
+            @endcan
+            @endif
+            @if(auth()->user()->can('view pet') &&
+                auth()->user()->can('view ambulance') &&
+                auth()->user()->can('view diagnostic') &&
+                auth()->user()->can('view lab-test'))
             <li class="menu-header">Dynamic Content</li>
+            @can('view pet')
             <li><a class="nav-link" href="{{ route('admin.pet.index') }}"><i
                         data-feather="monitor"></i><span>Pet Service</span></a></li>
+            @endcan
+            @can('view ambulance')
             <li><a class="nav-link" href="{{ route('admin.ambulance.index') }}"><i
                         data-feather="monitor"></i><span>Ambulance Service</span></a></li>
+            @endcan
+            @can('view diagnostic')
             <li><a class="nav-link" href="{{ route('admin.diagnostic.index') }}"><i
                         data-feather="monitor"></i><span>Diagnostic Service</span></a></li>
+            @endcan
+            @can('view lab-test')
             <li><a class="nav-link" href="{{ route('admin.lab-test.index') }}"><i
                         data-feather="monitor"></i><span>Lab Test</span></a></li>
+            @endcan
+            @endif
 
             @role('Super Admin')
             <li class="menu-header">
