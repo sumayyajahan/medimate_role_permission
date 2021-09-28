@@ -1,6 +1,6 @@
 <!-- Created by Ariful Islam at 6/6/2021 - 11:27 AM -->
 @extends('layouts.admin')
-@section('title','Add Role')
+@section('title','Add Permission')
 @section('content')
    @include('includes.banner',['one'=>'Permissions','two'=>'Create'])
 
