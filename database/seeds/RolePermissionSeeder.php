@@ -231,6 +231,8 @@ class RolePermissionSeeder extends Seeder
         $permission->assignRole($roleAdmin);
        }
 
-       $permission->assignRole($roleSuperAdmin);
+       //$permission->assignRole($roleSuperAdmin);
+       $roleSuperAdmin->syncPermissions($permissions);
+       
     }
 }
