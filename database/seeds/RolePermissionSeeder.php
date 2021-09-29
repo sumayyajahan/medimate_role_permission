@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Admin;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
        //Create Roles
+       $admins = Admin::all();
        $roleSuperAdmin = Role::create(['guard_name'=>'admin','name' => 'Super Admin']);
        $roleAdmin = Role::create(['guard_name'=>'admin','name' => 'admin']);
        $roleUser = Role::create(['guard_name'=>'admin','name' => 'user']);
@@ -231,8 +233,22 @@ class RolePermissionSeeder extends Seeder
         $permission->assignRole($roleAdmin);
        }
 
+
+
+
+
        //$permission->assignRole($roleSuperAdmin);
        $roleSuperAdmin->syncPermissions($permissions);
-       
+       //admin
+       foreach($admins as $admin){
+         if($admin->role == "Super Admin"){
+            $admin->assignRole($roleSuperAdmin);
+         }
+         else{
+            $admin->assignRole($roleAdmin);
+         }
+       }
+
+
     }
 }

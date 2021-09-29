@@ -41,7 +41,10 @@
                     <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="plus"></i><span>Add
                             User</span></a>
                     <ul class="dropdown-menu">
-                        @can('create users')
+                        @can('create users'))
+                            @php echo 'yes'; @endphp
+                        @else
+                            @php echo 'no'; @endphp
                             <li><a class="nav-link" href="{{ route('admin.user.create') }}">Patient</a></li>
                         @endcan
                         @can('create doctors')

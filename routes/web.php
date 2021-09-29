@@ -117,7 +117,7 @@ Route::prefix('rt-admin')->group(function () {
 Route::prefix('rt-admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::namespace('Admin')->group(function () {
-            Route::group(['middleware' => ['auth:admin', 'preventBackHistory']], function () {
+            Route::group(['middleware' => ['auth:admin',  'preventBackHistory']], function () {
 
                 Route::resource('roles', 'RolesController');
                 Route::resource('permissions', 'PermissionController');

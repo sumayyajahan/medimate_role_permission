@@ -11,10 +11,11 @@ use Illuminate\Notifications\Notifiable;
 
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
 
 class Admin extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasRoles;
+    use Notifiable, SoftDeletes, HasRoles, HasPermissions;
 
     use LogsActivity;
 
