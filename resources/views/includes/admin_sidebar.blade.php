@@ -23,11 +23,14 @@
             </div>
         </div>
         <ul class="sidebar-menu">
-            @role('Super Admin', 'admin')
-    I am a super-admin!
-@else
-    I am not a super-admin...
-@endrole
+            <div class="ml-5">
+                @role('Super Admin', 'admin')
+                I am a super-admin!
+                @else
+                I am not a super-admin...
+                @endrole
+            </div>
+
             <li><a class="nav-link" href="{{ route('admin.dashboard') }}"><i
                         data-feather="monitor"></i><span>Dashboard</span></a></li>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -121,9 +123,11 @@ class RolesController extends Controller
 
     public function assignRole()
     {
-        $users=User::all();
         $roles=Role::all();
-        return view("admin.roles.assignRole",compact('users','roles'));
+        $doctors=Doctor::all();
+        $pharmaciests=Pharmacy::all();
+
+        return view("admin.roles.assignRole",compact('roles','doctors', 'pharmaciests'));
     }
 
     public function storeRoleToAdmin(Request $request)
