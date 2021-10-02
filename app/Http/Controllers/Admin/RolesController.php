@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Pharmacy;
+use App\Models\ServiceProvider;
+use App\ServiceType;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -126,8 +128,10 @@ class RolesController extends Controller
         $roles=Role::all();
         $doctors=Doctor::all();
         $pharmaciests=Pharmacy::all();
+        $serviceProviders=ServiceProvider::all();
+        $service_types=ServiceType::all();
 
-        return view("admin.roles.assignRole",compact('roles','doctors', 'pharmaciests'));
+        return view("admin.roles.assignRole",compact('roles','doctors','pharmaciests','serviceProviders','service_types'));
     }
 
     public function storeRoleToAdmin(Request $request)

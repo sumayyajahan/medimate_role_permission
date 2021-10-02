@@ -15,7 +15,15 @@
                             <h4>Assign Role to User</h4>
                         </div>
                         <div class="card-body">
-
+                            <div class="form-group">
+                                <label>Select Service Type</label>
+                                <select name="service_type" id="service_type_id" class="form-control">
+                                    <option value="">-select service type-</option>
+                                    @foreach ($serviceTypes as $serviceType)
+                                        <option value="{{ $serviceType->id }}">{{ $serviceType->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Select User</label>
                                 <select name="user_id" id="user_id" class="form-control">
