@@ -19,18 +19,18 @@
                                 <label>Select Service Type</label>
                                 <select name="service_type" id="service_type_id" class="form-control">
                                     <option value="">-select service type-</option>
-                                    @foreach ($serviceTypes as $serviceType)
-                                        <option value="{{ $serviceType->id }}">{{ $serviceType->name }}</option>
+                                    @foreach ($service_types as $service_type)
+                                        <option value="{{ $service_type->id }}">{{ $service_type->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Select User</label>
-                                <select name="user_id" id="user_id" class="form-control">
-                                    <option value="">-select user-</option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
+                                <label>Select Service Person</label>
+                                <select name="person_name" id="person_id" class="form-control">
+                                    <option value="">-select person-</option>
+
+                                        <option value=""></option>
+
                                 </select>
                             </div>
                             <div class="form-group">
