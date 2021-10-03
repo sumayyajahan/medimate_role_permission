@@ -28,9 +28,9 @@
                                 <label>Select Service Person</label>
                                 <select name="person_name" id="person_id" class="form-control">
                                     <option value="">-select person-</option>
-
-                                        <option value=""></option>
-
+                                    @foreach ($doctors as $doctor)
+                                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -59,6 +59,45 @@
                 $("input[type='checkbox']").prop('checked', false);
             } else {
                 $("input[type='checkbox']").prop('checked', true);
+            }
+        });
+
+        $('#service_type_id').change(function(){
+            var serviceType = $(this).val();
+            var doctors = {{ $doctors->toJson() }};
+            doctors.forEach(function(doctor) {
+
+             console.log(doctor);
+
+            });
+            var pharmaciests = {{ $pharmaciests->toJson() }};
+            pharmaciests.forEach(function(pharmaciest) {
+
+             console.log(pharmaciest);
+
+            });
+            var serviceProviders = {{ $serviceProviders->toJson() }};
+            serviceProviders.forEach(function(serviceProvider) {
+
+             console.log(serviceProvider);
+
+            });
+            if(serviceType){
+              $.ajax({
+                  type:"GET",
+                  url:"{{url('/rt-admin/assignRole')}}",
+                  data:{service_type_id:serviceType},
+                  dataType:'json',
+                  success:function(res){
+                    if(res){
+                     $("#person_id").val(res);
+                    }else{
+                     $("#person_id").empty();
+                    }
+                  }
+              });
+            }else{
+                $("#person_id").empty();
             }
         });
     </script>
