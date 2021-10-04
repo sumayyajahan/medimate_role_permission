@@ -8,10 +8,12 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Pharmacy;
 use App\Models\ServiceProvider;
-use App\ServiceType;
+use App\Models\ServiceType;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Calculation\Web\Service;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use DB;
 
 class RolesController extends Controller
 {
@@ -19,7 +21,7 @@ class RolesController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.roles.index',compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -40,7 +42,7 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create(['guard_name' => 'admin','name' => $request->name]);
+        $role = Role::create(['guard_name' => 'admin', 'name' => $request->name]);
         return redirect()->route('admin.roles.index')->with('success', 'Successfully Created.');
     }
 
@@ -102,50 +104,67 @@ class RolesController extends Controller
     //assign permission to a role
     public function assignPermission()
     {
-        $roles=Role::all();
-        $permissions=Permission::all();
-        return view('admin.roles.assignPermission',compact('roles','permissions'));
+        $roles = Role::all();
+        $permissions = Permission::all();
+        return view('admin.roles.assignPermission', compact('roles', 'permissions'));
     }
 
     public function storePermissionToRole(Request $request)
     {
-        $role=Role::find($request->role);
+        $role = Role::find($request->role);
 
 
         foreach ($request->permission_ids as $permission_id) {
-            $permission=Permission::find($permission_id);
+            $permission = Permission::find($permission_id);
             $role->givePermissionTo($permission);
             $permission->assignRole($role);
         }
 
-        return redirect("rt-admin/assignPermission")->with("success","Permissions Assigned to Role.");
-
+        return redirect("rt-admin/assignPermission")->with("success", "Permissions Assigned to Role.");
     }
 
 
     public function assignRole()
     {
-        $roles=Role::all();
-        $doctors=Doctor::all();
-        $pharmaciests=Pharmacy::all();
-        $serviceProviders=ServiceProvider::all();
-        $service_types=ServiceType::all();
+        $roles = Role::all();
+        $doctors = Doctor::all();
+        // dd($doctors);
+        // foreach($doctors as $doctor){
+        //     echo $doctor->name;
+        // }
+        // die();
 
-        return view("admin.roles.assignRole",compact('roles','doctors','pharmaciests','serviceProviders','service_types'));
+        $pharmaciests = Pharmacy::all();
+        $serviceProviders = ServiceProvider::all();
+        $service_types = ServiceType::all();
+
+        return view("admin.roles.assignRole", compact('roles', 'doctors', 'pharmaciests', 'serviceProviders', 'service_types'));
+    }
+
+    public function getServices(Request $request)
+    {
+        $service_type_id = $request->service_type_id;
+        $serviceType = ServiceType::find($service_type_id);
+        $services = DB::table($serviceType->name)->get();
+        $data = "";
+        foreach ($services as $service) {
+
+            $data .= "<option value='" . $service->id . "'>" . $service->name . "</option>";
+        }
+        return $data;
     }
 
     public function storeRoleToAdmin(Request $request)
     {
-        $user=User::find($request->user_id);
+        $user = User::find($request->user_id);
 
-        $role=Role::find($request->role_id);
+        $role = Role::find($request->role_id);
 
         //dd($user);
         $user->assignRole([$role->name]);
 
 
 
-        return redirect("rt-admin/assignRole")->with("success","Role Assigned to User Successfully.");
-
+        return redirect("rt-admin/assignRole")->with("success", "Role Assigned to User Successfully.");
     }
 }

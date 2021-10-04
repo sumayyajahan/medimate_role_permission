@@ -103,4 +103,8 @@ class Pharmacy extends Authenticatable //implements MustVerifyEmail
     {
         $this->notify(new ResetPasswordQueue($token));
     }
+
+    public function service_type(){
+        $this->belongsTo(ServiceType::class);
+    }
 }

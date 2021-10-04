@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\ResetPasswordQueue;
 use App\Notifications\VerifyEmailQueue;
+use App\ServiceType;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -122,5 +123,9 @@ class ServiceProvider extends Authenticatable //implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordQueue($token));
+    }
+
+    public function service_type(){
+        $this->belongsTo(ServiceType::class);
     }
 }

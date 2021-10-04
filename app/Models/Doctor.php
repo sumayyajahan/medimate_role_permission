@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Models\ServiceType;
 
 
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -186,5 +187,9 @@ class Doctor extends Authenticatable //implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordQueue($token));
+    }
+
+    public function service_type(){
+        return $this->belongsTo(ServiceType::class, 'service_type_id');
     }
 }

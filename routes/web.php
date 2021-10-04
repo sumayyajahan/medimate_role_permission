@@ -125,6 +125,7 @@ Route::prefix('rt-admin')->group(function () {
                 Route::post('storePermissionToRole','RolesController@storePermissionToRole')->name('storePermissionToRole');
                 Route::get('assignRole','RolesController@assignRole')->name('assignRole');
                 Route::post('storeRoleToAdmin','RolesController@storeRoleToAdmin')->name('storeRoleToAdmin');
+                Route::get('getServices','RolesController@getServices')->name('getServices');
                 // Dashboard
                 Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
                 //change password
