@@ -22,6 +22,7 @@ class RolePermissionSeeder extends Seeder
        $roleAccount = Role::create(['guard_name'=>'admin','name' => 'account']);
        $roleDoctor = Role::create(['guard_name'=>'admin','name' => 'doctor']);
        $roleInsurance = Role::create(['guard_name'=>'admin','name' => 'inurance']);
+       $rolePharmacies = Role::create(['guard_name'=>'admin','name' => 'pharmacy']);
        $roleInstitutionalClient = Role::create(['guard_name'=>'admin','name' => 'institutionalClient']);
 
        //Permission List as array
@@ -229,8 +230,8 @@ class RolePermissionSeeder extends Seeder
        for($i=0; $i< count($permissions); $i++){
 
         $permission = Permission::create(['guard_name'=>'admin','name' => $permissions[$i]]);
-        $roleAdmin->givePermissionTo($permission);
-        $permission->assignRole($roleAdmin);
+      //   $roleAdmin->givePermissionTo($permission);
+      //   $permission->assignRole($roleAdmin);
        }
 
 

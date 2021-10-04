@@ -59,19 +59,22 @@
             }
         });
 
-        $('#service_type_id').change(function(){
+        $('#service_type_id').change(function() {
             var serviceType = $(this).val();
-
-              $.ajax({
-                  type:"GET",
-                  url:"{{url('/rt-admin/getServices')}}",
-                  data:{service_type_id:serviceType},
-                  dataType:'json',
-                  success:function(res){
-                      console.log(res);
-                   $("#person_id").html(res);
-                  }
-              });
+            $("#person_id").html("<option>-select a person-</option>");
+            $.ajax({
+                type: "GET",
+                url: "{{ url('/rt-admin/getServices') }}",
+                data: {
+                    service_type_id: serviceType
+                },
+                dataType: 'json',
+                success: function(res) {
+                    res.forEach(el => {
+                        $("#person_id").append("<option value='" + el.id + "'>" + el.name +"</option>");
+                    })
+                }
+            });
 
         });
     </script>

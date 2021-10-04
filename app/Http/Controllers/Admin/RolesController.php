@@ -146,12 +146,8 @@ class RolesController extends Controller
         $service_type_id = $request->service_type_id;
         $serviceType = ServiceType::find($service_type_id);
         $services = DB::table($serviceType->name)->get();
-        $data = "";
-        foreach ($services as $service) {
 
-            $data .= "<option value='" . $service->id . "'>" . $service->name . "</option>";
-        }
-        return $data;
+        return $services;
     }
 
     public function storeRoleToAdmin(Request $request)
