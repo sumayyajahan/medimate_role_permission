@@ -18,7 +18,7 @@ class RolePermissionSeeder extends Seeder
        $admins = Admin::all();
        $roleSuperAdmin = Role::create(['guard_name'=>'admin','name' => 'Super Admin']);
        $roleAdmin = Role::create(['guard_name'=>'admin','name' => 'admin']);
-       $roleUser = Role::create(['guard_name'=>'admin','name' => 'user']);
+       //$roleUser = Role::create(['guard_name'=>'admin','name' => 'user']);
        $roleAccount = Role::create(['guard_name'=>'admin','name' => 'account']);
        $roleDoctor = Role::create(['guard_name'=>'admin','name' => 'doctor']);
        $roleInsurance = Role::create(['guard_name'=>'admin','name' => 'inurance']);

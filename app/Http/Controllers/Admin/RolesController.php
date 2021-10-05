@@ -152,7 +152,7 @@ class RolesController extends Controller
 
     public function storeRoleToAdmin(Request $request)
     {
-        $user = User::find($request->user_id);
+        $admin = Admin::find($request->user_id);
 
         $role = Role::find($request->role_id);
 

@@ -12,6 +12,7 @@ use App\Models\DoctorWallet;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Str;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
@@ -67,6 +68,13 @@ class AuthController extends Controller
         $input['password'] = bcrypt($input['password']);
         $input['doctorid'] = "MMDR" . date('yis') . rand(1, 9);
         $input['status'] = 0;
+        $input['admin_id'] = Admin::create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'mobile'=>$input['mobile'],
+            'password'=>$input['password']
+        ])->id;
+
         $doctor = Doctor::create($input);
         $doctor->referral_code = CommonHelper::createReferralCode($request->name);
         $doctor->save();
