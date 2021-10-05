@@ -516,12 +516,13 @@
                 <i class="fa fa-cog"></i> Setting</li>
             <li><a class="nav-link" href="{{ route('admin.roles.index') }}"><i
                     class="fa fa-user-tag"></i><span>Roles</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.assignPermission') }}"><i
+                class="fa fa-lock-open"></i><span>Assign Permission</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.assignRole') }}"><i
                     class="fa fa-user-circle"></i><span>Assign Role</span></a></li>
             <li><a class="nav-link" href="{{route('admin.permissions.index') }}"><i
                         class="fa fa-lock"></i><span>Permissions</span></a></li>
-            <li><a class="nav-link" href="{{ route('admin.assignPermission') }}"><i
-                class="fa fa-lock-open"></i><span>Assign Permission</span></a></li>
+
             @endrole
 
             {{-- <li><a class="nav-link" href="{{route('admin.feedbacks')}}"><i

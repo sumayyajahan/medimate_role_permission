@@ -145,7 +145,9 @@ class RolesController extends Controller
     {
         $service_type_id = $request->service_type_id;
         $serviceType = ServiceType::find($service_type_id);
+
         $services = DB::table($serviceType->name)->get();
+
 
         return $services;
     }
@@ -157,7 +159,7 @@ class RolesController extends Controller
         $role = Role::find($request->role_id);
 
         //dd($user);
-        $user->assignRole([$role->name]);
+        $admin->assignRole([$role->name]);
 
 
 
