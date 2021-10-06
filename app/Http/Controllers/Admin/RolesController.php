@@ -127,18 +127,13 @@ class RolesController extends Controller
     public function assignRole()
     {
         $roles = Role::all();
-        $doctors = Doctor::all();
-        // dd($doctors);
-        // foreach($doctors as $doctor){
-        //     echo $doctor->name;
-        // }
-        // die();
+        $admins = Admin::all();
+        //$doctors = Doctor::all();
+        //$pharmaciests = Pharmacy::all();
+        //$serviceProviders = ServiceProvider::all();
+        //$service_types = ServiceType::all();
 
-        $pharmaciests = Pharmacy::all();
-        $serviceProviders = ServiceProvider::all();
-        $service_types = ServiceType::all();
-
-        return view("admin.roles.assignRole", compact('roles', 'doctors', 'pharmaciests', 'serviceProviders', 'service_types'));
+        return view("admin.roles.assignRole", compact('roles', 'admins'));
     }
 
     public function getServices(Request $request)
@@ -154,7 +149,7 @@ class RolesController extends Controller
 
     public function storeRoleToAdmin(Request $request)
     {
-        $admin = Admin::find($request->user_id);
+        $admin = Admin::find($request->admin_id);
 
         $role = Role::find($request->role_id);
 

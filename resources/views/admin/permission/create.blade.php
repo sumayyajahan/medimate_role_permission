@@ -19,14 +19,14 @@
                             <div class="form-group">
                                 <label>Name</label>
                                 <input value="" type="text" class="form-control" name="name" required>
-                                <span class="badge badge-pill badge-success mt-3">
+                                {{-- <span class="badge badge-pill badge-success mt-3">
                                     @php
                                        use App\Models\Admin;
                                         $item = new Admin;
                                         $table = $item->getTable();
                                         print_r($table);
                                     @endphp
-                                </span>
+                                </span> --}}
                             </div>
 
                         </div>

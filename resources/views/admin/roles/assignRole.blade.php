@@ -16,18 +16,12 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Select Service Type</label>
-                                <select name="service_type" id="service_type_id" class="form-control">
-                                    <option value="">-select service type-</option>
-                                    @foreach ($service_types as $service_type)
-                                        <option value="{{ $service_type->id }}">{{ $service_type->name }}</option>
+                                <label>Select Admin</label>
+                                <select name="admin_id" id="admin_id" class="form-control">
+                                    <option value="">-select admin-</option>
+                                    @foreach ($admins as $admin)
+                                    <option value="{{ $admin->id }}">{{ $admin->name }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Select Service Person</label>
-                                <select name="person_name" id="person_id" class="form-control">
-                                    <option value="">-select person-</option>
                                 </select>
                             </div>
                             <div class="form-group">

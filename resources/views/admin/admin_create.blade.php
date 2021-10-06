@@ -27,7 +27,7 @@
                             <label>Email</label>
                             <input value="{{old('email')}}" type="email" class="form-control" name="email" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Role</label>
                            <select class="form-control" name="role" required>
                                <option value="Super Admin">Super Admin</option>
@@ -35,7 +35,7 @@
                                <option value="Moderator">Moderator</option>
                                <option value="Service Administration">Service Administration</option>
                            </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" name="password" minlength="8" required>
