@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pharmacy;
+use App\Models\Admin;
 use App\Http\Requests\PharmacyCreateRequest;
 use App\Http\Requests\PharmacyUpdateRequest;
 use App\Helpers\FileHelper;
@@ -43,9 +44,23 @@ class PharmacyController extends Controller
     {
 
         $imageName = FileHelper::uploadImage($request);
-        $password = bcrypt($request->password);
-        $pharmaid = "MMPH" . date('ymdHis') . rand(10, 99);
-        $pharmacy = Pharmacy::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => Auth::id(), 'pharmaid'=> $pharmaid, 'password' => $password]));
+        //$password = bcrypt($request->password);
+        //$pharmaid = "MMPH" . date('ymdHis') . rand(10, 99);
+        //$pharmacy = Pharmacy::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => Auth::id(), 'pharmaid'=> $pharmaid, 'password' => $password]));
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);
+        $input['pharmaid'] = "MMPH" . date('ymdHis') . rand(10, 99);
+        $input['image']=$imageName;
+        $input['admin_id'] = Admin::create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'mobile'=>$input['mobile'],
+            'password'=>$input['password']
+        ])->id;
+
+        $pharmacy = Pharmacy::create($input);
+        $pharmacy->save();
+
 
         return back()->with('success', 'Successfully Created.');
     }

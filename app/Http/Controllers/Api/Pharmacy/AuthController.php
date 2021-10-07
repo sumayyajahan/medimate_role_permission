@@ -6,6 +6,7 @@ use App\Helpers\CommonHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pharmacy;
+use App\Models\Admin;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -37,6 +38,12 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['pharmaid'] = "MMPH" . date('yis') . rand(1, 9);
+        $input['admin_id'] = Admin::create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'mobile'=>$input['mobile'],
+            'password'=>$input['password']
+        ])->id;
         $pharmacy = Pharmacy::create($input);
 
         $referralCode = Str::slug($request->name) . "-" . rand(11, 999);

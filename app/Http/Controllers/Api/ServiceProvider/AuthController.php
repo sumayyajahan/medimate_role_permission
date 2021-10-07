@@ -11,6 +11,7 @@ use App\Models\Doctor;
 use App\Models\ServiceProviderComission;
 use App\Models\ServiceProviderWallet;
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\UserWallet;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -47,6 +48,12 @@ class AuthController extends Controller
         $password = bcrypt($input['password']);
         $input['password'] = $password;
         $input['serviceid'] = "MMSP" . date('yis') . rand(1, 9);
+        $input['admin_id'] = Admin::create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'mobile'=>$input['mobile'],
+            'password'=>$input['password']
+        ])->id;
         $service_provider = ServiceProvider::create($input);
         $service_provider->referral_code = CommonHelper::createReferralCode($request->name);
         $service_provider->save();

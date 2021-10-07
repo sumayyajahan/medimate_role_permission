@@ -10,6 +10,7 @@ use Str;
 use App\Http\Requests\ServiceProviderCreateRequest;
 use App\Http\Requests\ServiceProviderUpdateRequest;
 use App\Helpers\FileHelper;
+use App\Models\Admin;
 use App\Models\ServiceProviderComission;
 use App\Models\ServiceProviderWallet;
 use Auth;
@@ -47,10 +48,22 @@ class ServiceProviderController extends Controller
     {
 
         $imageName = FileHelper::uploadImage($request);
-        $password = bcrypt($request->password);
-        $serviceProviderId = "MMSP" . date('ymdHis') . rand(10, 99);
-        $serviceProvider = ServiceProvider::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => Auth::id(), 'password' => $password, 'serviceid' => $serviceProviderId]));
+        //$password = bcrypt($request->password);
+        //$serviceProviderId = "MMSP" . date('ymdHis') . rand(10, 99);
+        //$serviceProvider = ServiceProvider::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => Auth::id(), 'password' => $password, 'serviceid' => $serviceProviderId]));
         // $referralCode = Str::slug($request->name) . "-" . $serviceProvider->id;
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);
+        $input['serviceid'] = "MMSP" . date('ymdHis') . rand(10, 99);
+        $input['image']=$imageName;
+        $input['admin_id'] = Admin::create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'mobile'=>$input['mobile'],
+            'password'=>$input['password']
+        ])->id;
+
+        $serviceProvider = ServiceProvider::create($input);
         $serviceProvider->referral_code = CommonHelper::createReferralCode($request->name);
         $serviceProvider->save();
         // return $serviceProvider;
