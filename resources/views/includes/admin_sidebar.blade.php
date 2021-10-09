@@ -26,8 +26,8 @@
             <div class="ml-5">
                 @role('Super Admin', 'admin')
                 I am a super-admin!
-                @else
-                I am not a super-admin...
+                {{-- @else
+                I am not a super-admin... --}}
                 @endrole
             </div>
 
