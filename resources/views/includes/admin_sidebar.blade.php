@@ -38,7 +38,7 @@
             @if (auth()->user()->can('create users') &&
     auth()->user()->can('create doctors') &&
     auth()->user()->can('create pharmacies') &&
-    auth()->user()->can('create pharmacy-salesman'))
+    auth()->user()->can('create pharmacy_salesmen'))
                 <li class="menu-header">Account Administration</li>
                 <li class="dropdown" style="display: none;">
                     <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="plus"></i><span>Add
@@ -182,11 +182,10 @@
             @if (auth()->user()->can('create otc_products') &&
     auth()->user()->can('create bulk_reschedules') &&
     auth()->user()->can('view otc_products') &&
-    auth()->user()->can('edit admins'))
+    auth()->user()->can('view user_orders'))
                 <li class="dropdown">
                     <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                            data-feather="shopping-cart"></i><span>Pharmacy
-                            Service
+                            data-feather="shopping-cart"></i><span>Pharmacy Service
                         </span></a>
                     <ul class="dropdown-menu">
                         @can('create otc_products')
@@ -200,7 +199,7 @@
                             <li><a class="nav-link" href="{{ route('admin.product.index') }}">Manage Products</a>
                             </li>
                         @endcan
-                        @can('edit admins')
+                        @can('view user_orders')
                             <li><a class="nav-link" href="{{ route('admin.pending') }}">Pending Orders</a></li>
                             <li><a class="nav-link" href="{{ route('admin.delivered') }}">Delivered Orders</a></li>
                             <li><a class="nav-link" href="{{ route('admin.approved') }}">Approved Orders</a></li>
