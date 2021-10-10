@@ -51,24 +51,24 @@ class DoctorController extends Controller
     {
         // return $request;
         $imageName = FileHelper::uploadImage($request);
-        //$password = bcrypt($request->password);
-        //$doctorId = "D" . date('ymdHis') . rand(10, 99);
+        $password = bcrypt($request->password);
+        $doctorId = "D" . date('ymdHis') . rand(10, 99);
 
-        $input = $request->all();
+        /*$input = $request->all();
         $input['password'] = bcrypt($request->password);
         $input['doctorid'] = "D" . date('ymdHis') . rand(10, 99);
-        $input['image']=$imageName;
-        $input['admin_id'] = Admin::create([
-            'name'=>$input['name'],
-            'email'=>$input['email'],
-            'mobile'=>$input['mobile'],
-            'password'=>$input['password']
+        $input['image']=$imageName;*/
+        $adminId = Admin::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'mobile'=>$request->mobile,
+            'password'=>bcrypt($request->password)
         ])->id;
 
-        $doctor = Doctor::create($input);
+        //$doctor = Doctor::create($input);
 
-
-        // $doctor = Doctor::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => Auth::id(), 'password' => $password, 'doctorid' => $doctorId]));
+        //
+         $doctor = Doctor::create(array_merge($request->all(), ['image' => $imageName, 'admin_id' => $adminId, 'password' => $password, 'doctorid' => $doctorId]));
         $specializationDatabase = "";
         foreach ($request->specializations as $specialization) {
             DoctorSpecialization::create(['doctor_id' => $doctor->id, 'specialization_id' => $specialization]);
