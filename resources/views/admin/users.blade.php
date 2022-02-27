@@ -20,10 +20,11 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Mobile</th>
-                                    <th>Address</th>
+                                    <th>Created Date</th>
+                                    <!---<th>Address</th>
                                     <th>Gender</th>
                                     <th>Referral Code</th>
-                                    <th>Child</th>
+                                    <th>Child</th>--->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,7 +39,8 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->mobile}}</td>
-                                    <td>{{$user->address}}</td>
+                                    <td>{{$user->created_at->format('d/m/Y')}}</td>
+                                    <!---<td>{{$user->address}}</td>
                                     <td>{{$user->gender}}</td>
                                     <td>{{$user->referral_code}}</td>
                                     <td>@if($user->parent_id == NULL)
@@ -46,7 +48,7 @@
                                         <a href="{{route('admin.user.child',$user->id)}}"> View </a>
                                         @else
                                         <a href="{{route('admin.user.child.edit',$user->id)}}">Separate</a>
-                                        @endif</td>
+                                        @endif</td>--->
 
                                     <td class="d-flex">
                                         <a href="{{route('admin.user.show',$user->id)}}"> <button

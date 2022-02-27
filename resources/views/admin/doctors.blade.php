@@ -20,7 +20,9 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Mobile</th>
-                                        <th>Address</th>
+                                        <th>Degree</th>
+                                        <th>Date</th>
+                                        <!---<th>Address</th>--->
                                         <th>Specialization</th>
                                         <th>Department</th>
                                         <th>Action</th>
@@ -39,7 +41,8 @@
                                             <td>{{ $doctor->name }}</td>
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->mobile }}</td>
-                                            <td>{{ $doctor->address }}</td>
+                                            <td>{{ $doctor->degree }}</td>
+                                            <td>{{ $doctor->created_at->format('d/m/Y') }}</td>
                                             <td>{{ str_replace(',', ',  ', $doctor->specialization) }}</td>
                                             <td>{{ $doctor->department }}</td>
 
